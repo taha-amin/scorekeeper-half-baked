@@ -12,6 +12,10 @@ const finishGameButton = document.getElementById('finish-game-button');
 const teamOneLabel = document.getElementById('team-one-name');
 const teamTwoLabel = document.getElementById('team-two-name');
 
+//Created 2 new DOM elements
+const nameOneInput = document.getElementById('team-one');
+const nameTwoInput = document.getElementById('team-two');
+
 // create an array to hold on to the state of past games
 
 const pastGames = [];
@@ -24,10 +28,14 @@ let score2 = 0;
 
 nameFormButton.addEventListener('click', () => {
     // get the name data from the form
+    //set the state to this data from the form
+    name1 = nameOneInput.value;
+    name2 = nameTwoInput.value;
 
-    // set the state to this data from the form
 
     // reset the form values
+    nameOneInput.value = '';
+    nameTwoInput.value = '';
 
     // refresh the current game element with new data by calling the appropriate function
     refreshCurrentGameEl();
@@ -70,17 +78,22 @@ finishGameButton.addEventListener('click', () => {
     // then push it to your array in state
     // (be sure to make a new object. do not declare the object in global scope and mutate it for reuse. This would cause difficult bugs)
     
-    pastGames.push();
+    /* let name1 = '';
+    let name2 = '';
+    let score1 = 0;
+    let score2 = 0; */
+
+    pastGames.push(name1, name2, score1, score2);
 
     displayAllGames();
 
     // reset the state to zero and empty strings
 
-    name1 = '';
+    /* name1 = '';
     name2 = '';
     score1 = 0;
-    score2 = 0;
-    
+    score2 = 0; */
+
     // refresh the current game element with new data by calling the appropriate function
     refreshCurrentGameEl();
 });
@@ -113,7 +126,7 @@ function displayAllGames() {
     // again, review the renderGame function in render-utils.js. How many arguments does it take? What order does it take them in?
     for (let game of pastGames) {
         const gameEl = renderGame(game);
-        gameEl.classList.add('past');
+        //gameEl.classList.add('past');
         pastGamesEl.append(gameEl);
     }
 }
