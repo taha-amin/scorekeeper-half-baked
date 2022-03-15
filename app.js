@@ -133,7 +133,7 @@ function displayAllGames() {
     // use the renderGame function to render and append a past game for each past game in state
     // again, review the renderGame function in render-utils.js. How many arguments does it take? What order does it take them in?
     for (let game of pastGames) {
-        console.log(game);
+        //console.log(game);
         const booger = renderGame(game.name1, game.name2, game.score1, game.score2);
         booger.classList.add('current');
         pastGamesEl.append(booger);
