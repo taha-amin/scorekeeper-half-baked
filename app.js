@@ -78,21 +78,29 @@ finishGameButton.addEventListener('click', () => {
     // then push it to your array in state
     // (be sure to make a new object. do not declare the object in global scope and mutate it for reuse. This would cause difficult bugs)
     
+    const currentGames = {
+        name1: name1,
+        name2: name2,
+        score1: score1,
+        score2: score2 
+    };
+
     /* let name1 = '';
     let name2 = '';
     let score1 = 0;
     let score2 = 0; */
 
-    pastGames.push(name1, name2, score1, score2);
+    //console.log(pastGames);
+    pastGames.push(currentGames);
+
 
     displayAllGames();
 
     // reset the state to zero and empty strings
-
-    /* name1 = '';
+    name1 = '';
     name2 = '';
     score1 = 0;
-    score2 = 0; */
+    score2 = 0;
 
     // refresh the current game element with new data by calling the appropriate function
     refreshCurrentGameEl();
@@ -125,8 +133,9 @@ function displayAllGames() {
     // use the renderGame function to render and append a past game for each past game in state
     // again, review the renderGame function in render-utils.js. How many arguments does it take? What order does it take them in?
     for (let game of pastGames) {
-        const gameEl = renderGame(game);
-        //gameEl.classList.add('past');
-        pastGamesEl.append(gameEl);
+        console.log(game);
+        const booger = renderGame(game.name1, game.name2, game.score1, game.score2);
+        booger.classList.add('current');
+        pastGamesEl.append(booger);
     }
 }
